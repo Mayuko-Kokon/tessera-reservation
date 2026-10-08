@@ -1,133 +1,217 @@
-@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap');
+/* ========================================
+   TESSERA TOKYO — RESERVATIONS
+======================================== */
 
-/* BASE */
+:root {
+  --background: #F3F1E6;
+  --text: #000000;
+  --active: #BF292C;
+  --selection: #D0E086;
+}
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
 body {
-  background-color: #F3F1E6;
-  color: #000000;
-  font-family: 'STIX Two Math', serif;
-}
-
-/* LAYOUT */
-
-.container {
+  margin: 0;
   min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 24px;
+  min-height: 100svh;
+  background: var(--background);
+  color: var(--text);
+  font-family: "STIX Two Math", serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* LOGO */
+/* ========================================
+   PAGE LAYOUT
+======================================== */
+
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 0 24px;
+}
+
+/* ========================================
+   LOGO
+======================================== */
+
+.site-header {
+  position: absolute;
+  top: 33.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
 
 .logo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-}
-
-.logo img {
   display: block;
-  width: 500px;
-  max-width: 85%;
+  width: min(410px, 65vw);
   height: auto;
+  margin: 0 auto;
+
+  /* ロゴを右へ1px */
+  transform: translateX(1px);
 }
 
-/* RESERVATIONS */
+/* ========================================
+   MAIN CONTENT
+======================================== */
 
-.reservations {
-  margin-top: 125px;
+.content {
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+  padding: 0 24px;
+  text-align: center;
 }
 
 .reservations h1 {
-  font-size: 18px;
+  margin: 0;
+  font-size: 20px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
-/* JP / EN */
-
-.booking-links {
+.reservation-links {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 45px;
-  margin-top: 30px;
-  font-size: 18px;
+  justify-content: center;
+  gap: 56px;
+
+  margin-top: 36px;
+  font-size: 20px;
+  line-height: 1.2;
 }
 
-.booking-links a {
-  color: #000000;
+.separator {
   text-decoration: none;
-  transition: opacity 0.3s ease;
 }
 
-.booking-links a:hover {
-  opacity: 0.5;
+/* ========================================
+   ADDRESS & CONTACT
+======================================== */
+
+.information {
+  margin-top: 44px;
 }
 
-/* CONTACT */
+.address {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1.35;
+}
 
 .contact {
-  font-size: 14px;
-  line-height: 1.3;
-  margin-top: 40px;
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 1.25;
 }
 
-.contact a {
-  color: #000000;
-  text-decoration: underline;
+/* ========================================
+   LINKS
+======================================== */
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.5px;
   text-underline-offset: 2px;
 }
 
-/* MOBILE */
+/* クリック中のリンクを赤に */
+a:active {
+  color: var(--active);
+}
 
-@media screen and (max-width: 768px) {
+/* キーボード操作で選択したリンクを赤に */
+a:focus-visible {
+  color: var(--active);
+}
 
-  .container {
-    min-height: 100vh;
-    min-height: 100dvh;
-    justify-content: center;
-    padding: 30px 24px;
+/* ========================================
+   TEXT SELECTION
+======================================== */
+
+::selection {
+  background: var(--selection);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: var(--selection);
+  color: var(--text);
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .page {
+    padding: 0 20px;
+  }
+
+  .site-header {
+    top: 36%;
   }
 
   .logo {
-    margin-top: 0;
+    width: min(190px, 68vw);
   }
 
-  .logo img {
-    width: 230px;
-    max-width: 85%;
-  }
-
-  .reservations {
-    margin-top: 105px;
+  .content {
+    top: 65%;
+    padding: 0 20px;
   }
 
   .reservations h1 {
-    font-size: 14px;
+    font-size: 13px;
   }
 
-  .booking-links {
-    font-size: 14px;
-    gap: 35px;
-    margin-top: 25px;
+  .reservation-links {
+    gap: 32px;
+    margin-top: 28px;
+    font-size: 13px;
+  }
+
+  .information {
+    margin-top: 32px;
+  }
+
+  .address {
+    max-width: 240px;
+    font-size: 11px;
+    line-height: 1.3;
   }
 
   .contact {
+    margin-top: 24px;
     font-size: 11px;
     line-height: 1.3;
-    margin-top: 30px;
   }
+}
 
+/* ========================================
+   SMALL SCREENS
+======================================== */
+
+@media (max-height: 560px) {
+
+  .page {
+    min-height: 560px;
+  }
 }
